@@ -400,6 +400,9 @@ spec:
             fuseReason:
               description: Reason for the condition's last transition.
               type: string
+            label:
+              description: Label for auto scaling
+              type: string
             masterNumberReady:
               description: The number of nodes that should be running the runtime
                 worker pod and have zero or more of the runtime master pod running

@@ -21,6 +21,7 @@ import (
 
 	data "github.com/fluid-cloudnative/fluid/api/v1alpha1"
 	"github.com/fluid-cloudnative/fluid/pkg/common"
+	//"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/util/retry"
 )
 
@@ -104,6 +105,15 @@ func (e *AlluxioEngine) CheckAndUpdateRuntimeStatus() (ready bool, err error) {
 		} else {
 			runtimeToUpdate.Status.WorkerPhase = data.RuntimePhaseNotReady
 		}
+
+		//selectorStr := "app" + "=" + workerName + "-" + "namespace"
+		//selectorStr := "app" + "=" + "alluxio"
+		selectorStr := "name" + "=" + masterName
+		//selector, err := labels.Parse(selectorStr)
+		//if err != nil {
+		//	return err
+		//}
+		runtimeToUpdate.Status.Selector = selectorStr
 
 		runtimeToUpdate.Status.FuseNumberReady = int32(fuses.Status.NumberReady)
 		runtimeToUpdate.Status.FuseNumberUnavailable = int32(fuses.Status.NumberUnavailable)

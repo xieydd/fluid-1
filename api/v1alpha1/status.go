@@ -111,6 +111,9 @@ type RuntimeStatus struct {
 
 	// CacheStatus represents the total resources of the dataset.
 	CacheStates common.CacheStateList `json:"cacheStates,omitempty"`
+
+	// Label for auto scaling
+	Selector string `json:"selector,omitempty"`
 }
 
 type RuntimePhase string

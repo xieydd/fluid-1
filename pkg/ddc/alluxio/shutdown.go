@@ -209,6 +209,7 @@ func (e *AlluxioEngine) destroyWorkers(workers int32) (err error) {
 
 		if len(toUpdate.Labels) < len(node.Labels) {
 			err := e.Client.Update(context.TODO(), toUpdate)
+			e.Log.Info("Dataset ", e.name, "clear", "worker node", node.Name, "removed labels", labelNames)
 			if err != nil {
 				return err
 			}

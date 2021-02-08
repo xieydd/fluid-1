@@ -3,7 +3,9 @@ FROM golang:1.14.2 as builder
 
 WORKDIR /go/src/github.com/fluid-cloudnative/fluid
 COPY . .
-
+#RUN go env -w  GOPROXY=https://goproxy.io,direct
+#RUN go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN make alluxioruntime-controller-build && \
     cp bin/alluxioruntime-controller /go/bin/alluxioruntime-controller
 

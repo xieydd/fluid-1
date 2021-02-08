@@ -231,6 +231,8 @@ type AlluxioRuntimeSpec struct {
 // +kubebuilder:printcolumn:name="Desired Fuses",type="integer",JSONPath=`.status.desiredFuseNumberScheduled`,priority=10
 // +kubebuilder:printcolumn:name="Fuse Phase",type="string",JSONPath=`.status.fusePhase`,priority=0
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=`.metadata.creationTimestamp`,priority=0
+// +kubebuilder:subresource:status
+// +kubebuilder:subresource:scale:specpath=.spec.replicas,statuspath=.status.desiredFuseNumberScheduled,selectorpath=.status.selector
 // +genclient
 
 // AlluxioRuntime is the Schema for the alluxioruntimes API

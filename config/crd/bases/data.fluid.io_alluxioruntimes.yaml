@@ -53,6 +53,10 @@ spec:
     singular: alluxioruntime
   scope: Namespaced
   subresources:
+    scale:
+      labelSelectorPath: .status.selector
+      specReplicasPath: .spec.replicas
+      statusReplicasPath: .status.desiredFuseNumberScheduled
     status: {}
   validation:
     openAPIV3Schema:
@@ -647,6 +651,9 @@ spec:
               type: string
             fuseReason:
               description: Reason for the condition's last transition.
+              type: string
+            label:
+              description: Label for auto scaling
               type: string
             masterNumberReady:
               description: The number of nodes that should be running the runtime
